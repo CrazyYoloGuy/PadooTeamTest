@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrations - Admin Dashboard</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/registrations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>Team Delivery</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="schedule.html">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="registrations.html">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Registrations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="categories.html">
+                                <i class="fas fa-tags"></i>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transfer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../LoginPage/index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Registrations</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search registrations...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        
+                        <div class="user-profile">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">Admin User</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Registrations Content -->
+            <div class="registrations-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Registrations</h3>
+                            <p class="stat-number" id="totalRegistrations">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                This week
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pending</h3>
+                            <p class="stat-number" id="pendingRegistrations">0</p>
+                            <span class="stat-change neutral">
+                                <i class="fas fa-minus"></i>
+                                Awaiting review
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Accepted</h3>
+                            <p class="stat-number" id="acceptedRegistrations">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                Approved
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Rejected</h3>
+                            <p class="stat-number" id="rejectedRegistrations">0</p>
+                            <span class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                Declined
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-section">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">
+                            <span>All</span>
+                            <span class="count" id="allCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="pending">
+                            <span>Pending</span>
+                            <span class="count" id="pendingCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="accepted">
+                            <span>Accepted</span>
+                            <span class="count" id="acceptedCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="rejected">
+                            <span>Rejected</span>
+                            <span class="count" id="rejectedCount">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Registrations Table -->
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Registration Requests</h3>
+                        <div class="table-actions">
+                            <button class="refresh-btn" onclick="refreshRegistrations()">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="registrationsTable">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Username</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="registrationsTableBody">
+                                <!-- Registrations will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="protection.js"></script>
+    <script src="src/js/registrations.js"></script>
+</body>
+</html> 

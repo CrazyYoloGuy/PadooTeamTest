@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - Admin Dashboard</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/users.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>Team Delivery</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="schedule.html">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="registrations.html">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Registrations</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="categories.html">
+                                <i class="fas fa-tags"></i>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transfer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../LoginPage/index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Users</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search users...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        
+                        <div class="user-profile">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">Admin User</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Users Content -->
+            <div class="users-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Users</h3>
+                            <p class="stat-number" id="totalUsers">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                This month
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Drivers</h3>
+                            <p class="stat-number" id="totalDrivers">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                Active
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Shops</h3>
+                            <p class="stat-number" id="totalShops">0</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                Registered
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Admins</h3>
+                            <p class="stat-number" id="totalAdmins">0</p>
+                            <span class="stat-change neutral">
+                                <i class="fas fa-minus"></i>
+                                System
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-section">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">
+                            <span>All</span>
+                            <span class="count" id="allCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="driver">
+                            <span>Drivers</span>
+                            <span class="count" id="driversCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="shop">
+                            <span>Shops</span>
+                            <span class="count" id="shopsCount">0</span>
+                        </button>
+                        <button class="filter-tab" data-filter="admin">
+                            <span>Admins</span>
+                            <span class="count" id="adminsCount">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>User Accounts</h3>
+                        <div class="table-actions">
+                            <button class="refresh-btn" onclick="refreshUsers()" style="background-color: #0ea5e9; color: white; padding: 10px 16px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Username</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- User Details Modal -->
+    <div class="modal-overlay" id="userModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">User Details</h3>
+                <button class="close-modal" onclick="closeUserModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- View Mode -->
+                <div id="viewModeContent">
+                    <div class="user-details-grid">
+                        <div class="detail-item">
+                            <label>Full Name</label>
+                            <span id="modalFullName">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Username</label>
+                            <span id="modalUsername">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Phone</label>
+                            <span id="modalPhone">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Role</label>
+                            <span id="modalRole">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Status</label>
+                            <span id="modalStatus">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Created</label>
+                            <span id="modalCreated">-</span>
+                        </div>
+                    </div>
+                    <div class="notes-section" id="notesSection">
+                        <h4>Notes</h4>
+                        <p id="modalNotes">No notes available</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-secondary" onclick="closeUserModal()">
+                            <i class="fas fa-times"></i>
+                            Close
+                        </button>
+                        <button class="btn-primary" onclick="switchToEditMode()">
+                            <i class="fas fa-edit"></i>
+                            Edit User
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Edit Mode -->
+                <div id="editModeContent" style="display: none;">
+                    <form id="editUserForm">
+                        <input type="hidden" id="editUserId">
+                        
+                        <div class="form-group">
+                            <label for="editFullName">Full Name</label>
+                            <input type="text" id="editFullName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editUsername">Username</label>
+                            <input type="text" id="editUsername" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPhone">Phone</label>
+                            <input type="text" id="editPhone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editRole">Role</label>
+                            <select id="editRole" class="form-control" required>
+                                <option value="driver">Driver</option>
+                                <option value="shop">Shop</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Category (for shops) -->
+                        <div class="form-group" id="categoryGroup" style="display: none;">
+                            <label for="editCategory">Category</label>
+                            <select id="editCategory" class="form-control">
+                                <option value="">None</option>
+                            </select>
+                            <small style="color: var(--gray-500);">Select a category for shop users. Default is None.</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editStatus">Status</label>
+                            <select id="editStatus" class="form-control" required>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editNotes">Notes</label>
+                            <textarea id="editNotes" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button type="button" class="btn-danger" onclick="confirmDeleteUser()">
+                                <i class="fas fa-trash"></i>
+                                Delete User
+                            </button>
+                            <button type="button" class="btn-secondary" onclick="switchToViewMode()">
+                                <i class="fas fa-times"></i>
+                                Cancel
+                            </button>
+                            <button type="button" class="btn-primary" onclick="saveUserChanges()">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="protection.js"></script>
+    <script src="src/js/users.js"></script>
+</body>
+</html> 

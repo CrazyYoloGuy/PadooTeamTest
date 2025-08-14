@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer - Admin Dashboard</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/transfer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>Team Delivery</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="schedule.html">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="registrations.html">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Registrations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="transfer.html">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transfer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="categories.html">
+                                <i class="fas fa-tags"></i>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../LoginPage/index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Transfer</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search transfers...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">0</span>
+                        </button>
+                        
+                        <div class="user-profile">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">Admin User</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Transfer Content -->
+            <div class="dashboard-content">
+                <!-- Transfer Section -->
+                <div class="transfer-section">
+                    <div class="section-header">
+                        <div class="header-content">
+                            <div class="header-main">
+                                <h1>Transfer Management</h1>
+                                <p>Select drivers to manage transfers and view their details</p>
+                            </div>
+                            <div class="header-stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">
+                                        <i class="fas fa-users"></i>
+                                    </span>
+                                    <div class="stat-info">
+                                        <span class="stat-number" id="totalDrivers">0</span>
+                                        <span class="stat-label">Active Drivers</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </span>
+                                    <div class="stat-info">
+                                        <span class="stat-number" id="totalOrders">0</span>
+                                        <span class="stat-label">Total Orders</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </span>
+                                    <div class="stat-info">
+                                        <span class="stat-number" id="totalTransfers">0</span>
+                                        <span class="stat-label">Transfers Today</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- First Row: Driver Selection Cards -->
+                    <div class="driver-selection-row">
+                        <!-- First Driver Card -->
+                        <div class="driver-selection-container">
+                            <div class="driver-card empty" id="driverCard1" onclick="openDriverSelector(1)" role="button" tabindex="0" aria-label="Select driver" onkeydown="if(event.key==='Enter'||event.key===' '){openDriverSelector(1)}">
+                                <div class="driver-card-content">
+                                    <div class="driver-card-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                                                   <div class="driver-card-text">
+                                           <h3>Select Driver</h3>
+                                           <p>Click to choose a driver</p>
+                                       </div>
+                                </div>
+                            </div>
+                            
+                            <!-- First Driver Details (hidden initially) -->
+                            <div class="driver-details-card" id="driverDetailsCard1" style="display: none;">
+                                <div class="driver-details-header">
+                                    <div class="driver-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="driver-info">
+                                        <h3 id="selectedDriverName1">Driver Name</h3>
+                                        <p id="selectedDriverRole1">Driver</p>
+                                    </div>
+                                    <button class="change-driver-btn" onclick="openDriverSelector(1)">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        Change
+                                    </button>
+                                </div>
+                                <div class="driver-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Total Orders</span>
+                                        <span class="stat-value" id="driverTotalOrders1">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Completed</span>
+                                        <span class="stat-value" id="driverCompletedOrders1">0</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Date Selector -->
+                                <div class="date-selector-container">
+                                    <div class="date-selector-header">
+                                        <h4>Select Date</h4>
+                                        <div class="date-input-container">
+                                            <input type="date" id="dateSelector1" class="date-input" onchange="loadDriverOrders(1)">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Orders List -->
+                                <div class="driver-orders-container">
+                                    <h4 class="orders-header">Orders</h4>
+                                    <div class="driver-orders-list" id="driverOrdersList1">
+                                        <div class="loading-orders">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span>Loading orders...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second Driver Card -->
+                        <div class="driver-selection-container">
+                            <div class="driver-card empty" id="driverCard2" onclick="openDriverSelector(2)" role="button" tabindex="0" aria-label="Select driver" onkeydown="if(event.key==='Enter'||event.key===' '){openDriverSelector(2)}">
+                                <div class="driver-card-content">
+                                    <div class="driver-card-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                                                   <div class="driver-card-text">
+                                           <h3>Select Driver</h3>
+                                           <p>Click to choose a driver</p>
+                                       </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Second Driver Details (hidden initially) -->
+                            <div class="driver-details-card" id="driverDetailsCard2" style="display: none;">
+                                <div class="driver-details-header">
+                                    <div class="driver-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="driver-info">
+                                        <h3 id="selectedDriverName2">Driver Name</h3>
+                                        <p id="selectedDriverRole2">Driver</p>
+                                    </div>
+                                    <button class="change-driver-btn" onclick="openDriverSelector(2)">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        Change
+                                    </button>
+                                </div>
+                                <div class="driver-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Total Orders</span>
+                                        <span class="stat-value" id="driverTotalOrders2">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Completed</span>
+                                        <span class="stat-value" id="driverCompletedOrders2">0</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Date Selector -->
+                                <div class="date-selector-container">
+                                    <div class="date-selector-header">
+                                        <h4>Select Date</h4>
+                                        <div class="date-input-container">
+                                            <input type="date" id="dateSelector2" class="date-input" onchange="loadDriverOrders(2)">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Orders List -->
+                                <div class="driver-orders-container">
+                                    <h4 class="orders-header">Orders</h4>
+                                    <div class="driver-orders-list" id="driverOrdersList2">
+                                        <div class="loading-orders">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span>Loading orders...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Driver List Modal -->
+                    <div class="driver-modal" id="driverModal">
+                        <div class="driver-modal-content">
+                            <div class="driver-modal-header">
+                                <h3>Select Driver</h3>
+                                <button class="close-modal" onclick="closeDriverSelector()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="driver-modal-body">
+                                <div class="driver-search">
+                                    <input type="text" id="driverSearch" placeholder="Search drivers..." onkeyup="filterDrivers()">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="driver-list" id="driverList">
+                                    <!-- Drivers will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Transfer Confirmation Modal -->
+    <div class="confirm-modal-overlay" id="transferConfirmOverlay" style="display: none;">
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="transferConfirmTitle">
+            <div class="confirm-header">
+                <h3 id="transferConfirmTitle">Confirm Transfer</h3>
+                <button class="close-modal" onclick="cancelTransferConfirm()" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="confirm-body">
+                <div class="confirm-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <p id="transferConfirmText">Are you sure you want to transfer this order?</p>
+            </div>
+            <div class="confirm-actions">
+                <button class="btn btn-secondary" onclick="cancelTransferConfirm()">Cancel</button>
+                <button class="btn btn-primary" id="transferConfirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="protection.js"></script>
+    <script src="src/js/transfer.js"></script>
+</body>
+</html> 

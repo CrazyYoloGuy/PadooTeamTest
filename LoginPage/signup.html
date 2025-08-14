@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sign Up - Team Delivery App</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="src/css/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="login-card signup-card">
+            <div class="header">
+                <div class="back-button">
+                    <a href="index.html">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <span class="logo-text">Team Delivery</span>
+                </div>
+                <h1>Create Account</h1>
+                <p class="subtitle">Already have an account? <a href="index.html" class="signup-link">Sign In</a></p>
+            </div>
+
+            <form class="login-form signup-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label>Select your role</label>
+                    <div class="role-tabs">
+                        <div class="role-tab" data-role="driver">
+                            <i class="fas fa-truck"></i>
+                            <span>Driver</span>
+                        </div>
+                        <div class="role-tab" data-role="shop">
+                            <i class="fas fa-store"></i>
+                            <span>Shop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" placeholder="Create a password">
+                        <button type="button" class="toggle-password">
+                            <i class="far fa-eye-slash"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-progress"></div>
+                        </div>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-input-container">
+                        <input type="password" id="confirm-password" placeholder="Confirm your password">
+                        <button type="button" class="toggle-password">
+                            <i class="far fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I agree to the <a href="#" class="terms-link">Terms of Service</a></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-button signup-button">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="src/js/signup.js"></script>
+</body>
+</html> 

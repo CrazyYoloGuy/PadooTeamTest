@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Team Delivery</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Admin dashboard for Team Delivery App">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Team Delivery">
+    <meta name="msapplication-TileColor" content="#007bff">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/Assets/pwaimages/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Assets/pwaimages/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Assets/pwaimages/icon-192x192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/Assets/pwaimages/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Assets/pwaimages/icon-16x16.png">
+    
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- PWA Manager -->
+    <script src="/pwa-manager.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>Team Delivery</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li class="active">
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="categories.html">
+                                <i class="fas fa-tags"></i>
+                                <span>Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="schedule.html">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="registrations.html">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Registrations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transfer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../LoginPage/index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Dashboard</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <!-- Real-time Connection Status -->
+                    <div class="connection-status-container">
+                        <span id="connectionStatus" class="connection-status connected">🟢 Connected</span>
+                        <span id="lastUpdateTime" class="last-update-time"></span>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">0</span>
+                        </button>
+                        
+                        <div class="user-profile">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">Admin User</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Users</h3>
+                            <p class="stat-number">40,689</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                8.5% from yesterday
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Orders</h3>
+                            <p class="stat-number">10,293</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                1.3% from past week
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Sales</h3>
+                            <p class="stat-number">$89,000</p>
+                            <span class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                4.3% from yesterday
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pending Orders</h3>
+                            <p class="stat-number">2,040</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                1.8% from yesterday
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Sales Overview</h3>
+                            <div class="chart-controls">
+                                <select class="chart-filter">
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>Last 3 Months</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Order Status</h3>
+                            <div class="chart-controls">
+                                <select class="chart-filter">
+                                    <option>This Week</option>
+                                    <option>This Month</option>
+                                    <option>This Year</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="orderChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Table -->
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Recent Orders</h3>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ORD-001</td>
+                                    <td>John Doe</td>
+                                    <td>Premium Package</td>
+                                    <td>$299.99</td>
+                                    <td><span class="status delivered">Delivered</span></td>
+                                    <td>2024-01-15</td>
+                                    <td>
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-002</td>
+                                    <td>Jane Smith</td>
+                                    <td>Express Delivery</td>
+                                    <td>$149.99</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>2024-01-14</td>
+                                    <td>
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#ORD-003</td>
+                                    <td>Mike Johnson</td>
+                                    <td>Standard Package</td>
+                                    <td>$199.99</td>
+                                    <td><span class="status processing">Processing</span></td>
+                                    <td>2024-01-13</td>
+                                    <td>
+                                        <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Welcome Popup -->
+    <div class="welcome-popup" id="welcomePopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="welcome-icon">
+                    <i class="fas fa-hand-wave"></i>
+                </div>
+                <div class="popup-profile">
+                    <div class="popup-profile-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <button class="popup-close" onclick="dashboard.closeWelcomePopup()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <h2>Welcome Back!</h2>
+                <p id="popupUserName">Admin</p>
+                <div class="welcome-subtitle">Ready to manage your delivery system?</div>
+            </div>
+            <div class="popup-footer">
+                <button class="popup-btn" onclick="dashboard.closeWelcomePopup()">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Container -->
+    <div class="notifications-container" id="notificationsContainer">
+        <!-- Notifications will be dynamically added here -->
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Toast messages will be dynamically added here -->
+    </div>
+
+    <script src="protection.js"></script>
+    <script src="src/js/dashboard.js"></script>
+</body>
+</html> 
+</html> 

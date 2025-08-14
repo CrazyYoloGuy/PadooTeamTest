@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories - Admin Dashboard</title>
+  <link rel="stylesheet" href="src/css/styles.css" />
+  <link rel="stylesheet" href="src/css/categories.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-truck-fast"></i>
+          <span>Team Delivery</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3>Main</h3>
+          <ul>
+            <li>
+              <a href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            </li>
+            <li class="active">
+              <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+            </li>
+            <li>
+              <a href="orders.html"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+            </li>
+            <li>
+              <a href="schedule.html"><i class="fas fa-calendar-alt"></i><span>Schedule</span></a>
+            </li>
+            <li>
+              <a href="registrations.html"><i class="fas fa-user-plus"></i><span>Registrations</span></a>
+            </li>
+            <li>
+              <a href="users.html"><i class="fas fa-users"></i><span>Users</span></a>
+            </li>
+            <li>
+              <a href="transfer.html"><i class="fas fa-exchange-alt"></i><span>Transfer</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../LoginPage/index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <div class="header-left">
+          <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+          <div class="breadcrumb"><span>Categories</span></div>
+        </div>
+        <div class="header-right">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="categorySearch" placeholder="Search categories..." />
+          </div>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="section-header">
+          <div class="header-content">
+            <div class="header-main">
+              <h1>Categories</h1>
+              <p>Create, edit, and manage shop categories</p>
+            </div>
+            <div class="header-stats">
+              <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-tags"></i></div>
+                <div class="stat-info">
+                  <span class="stat-number" id="totalCategories">0</span>
+                  <span class="stat-label">Total Categories</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="categories-layout">
+          <div class="panel-card new-category-card">
+            <h3>New Category</h3>
+            <div class="subtext">Create a category to organize shops.</div>
+            <div class="form-group">
+              <label for="newCatName">Name</label>
+              <input type="text" id="newCatName" class="form-control" placeholder="e.g. Bakery" />
+            </div>
+            <div class="form-group">
+              <label for="newCatDesc">Description</label>
+              <textarea id="newCatDesc" rows="3" class="form-control" placeholder="Short description..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-secondary" onclick="document.getElementById('newCatName').value='';document.getElementById('newCatDesc').value='';">Clear</button>
+              <button class="btn btn-primary" onclick="createCategory()"><i class="fas fa-plus"></i> Create</button>
+            </div>
+          </div>
+
+          <div class="panel-card list-card">
+            <div class="table-header compact">
+              <h3>All Categories</h3>
+              <button class="btn btn-secondary" onclick="loadCategories()" title="Refresh"><i class="fas fa-sync"></i> Refresh</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table categories-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th class="actions-col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="categoriesTableBody">
+                  <tr>
+                    <td colspan="4" class="loading-row">
+                      <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> <span>Loading...</span></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="src/js/categories.js"></script>
+</body>
+</html>

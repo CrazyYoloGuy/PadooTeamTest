@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Management - Team Delivery</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>Team Delivery</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Main</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="orders.html">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Orders</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="schedule.html">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Schedule</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="registrations.html">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Registrations</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transfer.html">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transfer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../LoginPage/index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="breadcrumb">
+                        <span>Schedule Management</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="connection-status-container">
+                        <span id="connectionStatus" class="connection-status connected">🟢 Connected</span>
+                        <span id="lastUpdateTime" class="last-update-time"></span>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search schedule...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">0</span>
+                        </button>
+                        
+                        <div class="user-profile">
+                            <div class="profile-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">Admin</span>
+                                <span class="user-role">Administrator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Schedule Management Header -->
+                <div class="section-header">
+                    <div class="header-content">
+                        <div class="header-main">
+                            <h1>Schedule Management</h1>
+                            <p>Manage driver schedules, assign deliveries, and optimize routes</p>
+                        </div>
+                        <div class="header-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="totalSchedules">0</span>
+                                    <span class="stat-label">Total Schedules</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="activeDrivers">0</span>
+                                    <span class="stat-label">Active Drivers</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-number" id="totalRoutes">0</span>
+                                    <span class="stat-label">Total Routes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Controls -->
+                <div class="schedule-controls">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <label for="dateSelector">Select Date</label>
+                            <input type="date" id="dateSelector" class="control-input">
+                        </div>
+                        <div class="control-group">
+                            <label for="driverSelector">Select Driver</label>
+                            <select id="driverSelector" class="control-select">
+                                <option value="">All Drivers</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <button class="btn btn-primary" onclick="createSchedule()">
+                                <i class="fas fa-plus"></i>
+                                Create Schedule
+                            </button>
+                        </div>
+                        <div class="control-group">
+                            <button class="btn btn-secondary" onclick="optimizeRoutes()">
+                                <i class="fas fa-route"></i>
+                                Optimize Routes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Calendar View -->
+                <div class="schedule-calendar-container">
+                    <div class="calendar-header">
+                        <h3>Weekly Schedule</h3>
+                        <div class="calendar-navigation">
+                            <button class="nav-btn" onclick="previousWeek()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span id="currentWeek">Week of January 1, 2024</span>
+                            <button class="nav-btn" onclick="nextWeek()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">
+                            <div class="day-header">Monday</div>
+                            <div class="day-header">Tuesday</div>
+                            <div class="day-header">Wednesday</div>
+                            <div class="day-header">Thursday</div>
+                            <div class="day-header">Friday</div>
+                            <div class="day-header">Saturday</div>
+                            <div class="day-header">Sunday</div>
+                        </div>
+                        <div class="calendar-days" id="calendarDays">
+                            <!-- Calendar days will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Driver Schedule List -->
+                <div class="driver-schedule-container">
+                    <div class="schedule-header">
+                        <h3>Driver Schedules</h3>
+                        <div class="schedule-actions">
+                            <button class="btn btn-secondary" onclick="exportSchedule()">
+                                <i class="fas fa-download"></i>
+                                Export
+                            </button>
+                            <button class="btn btn-primary" onclick="refreshSchedule()">
+                                <i class="fas fa-refresh"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-list" id="scheduleList">
+                        <!-- Driver schedules will be loaded here -->
+                        <div class="loading-schedule">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Loading schedules...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="src/js/schedule.js"></script>
+</body>
+</html> 

@@ -1,0 +1,273 @@
+/* Additional styles for signup page */
+.signup-card {
+    max-height: 85vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.signup-card::-webkit-scrollbar {
+    display: none;
+}
+
+.signup-form {
+    padding-top: 15px;
+}
+
+/* Compact form styling */
+.signup-form .form-group {
+    margin-bottom: 16px;
+}
+
+.signup-form .form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.signup-form .form-group input {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+/* Compact role selection */
+.role-tabs {
+    margin-top: 6px;
+}
+
+.role-tab {
+    padding: 12px 8px;
+}
+
+.role-tab i {
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.role-tab span {
+    font-size: 13px;
+}
+
+/* Compact password strength */
+.password-strength {
+    margin-top: 6px;
+}
+
+.strength-bar {
+    height: 3px;
+    margin-bottom: 4px;
+}
+
+.strength-text {
+    font-size: 11px;
+}
+
+/* Compact form options */
+.form-options {
+    margin: 16px 0;
+}
+
+.remember-me label {
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+/* Compact button */
+.signup-button {
+    margin-top: 6px;
+    padding: 14px 24px;
+    font-size: 14px;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.strength-bar {
+    height: 4px;
+    background-color: var(--gray-300);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.strength-progress {
+    height: 100%;
+    width: 0;
+    background-color: var(--gray-500);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.strength-progress.weak {
+    width: 33.33%;
+    background-color: var(--error-color);
+}
+
+.strength-progress.medium {
+    width: 66.66%;
+    background-color: var(--warning-color);
+}
+
+.strength-progress.strong {
+    width: 100%;
+    background-color: var(--success-color);
+}
+
+.strength-text {
+    font-size: 12px;
+    color: var(--gray-600);
+    font-weight: 500;
+}
+
+.strength-text.weak {
+    color: var(--error-color);
+}
+
+.strength-text.medium {
+    color: var(--warning-color);
+}
+
+.strength-text.strong {
+    color: var(--success-color);
+}
+
+/* Terms checkbox styling */
+.remember-me label {
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* Role Selection Styles */
+.role-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--gray-100);
+    border-radius: var(--radius-lg);
+    padding: 4px;
+    margin-top: 8px;
+}
+
+.role-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 12px;
+    border-radius: var(--radius-md);
+    background: var(--white);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    text-align: center;
+}
+
+.role-tab:hover {
+    background: var(--primary-50);
+    border-color: var(--primary-200);
+}
+
+.role-tab.active {
+    background: var(--primary-500);
+    border-color: var(--primary-600);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.role-tab i {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.role-tab span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Button enhancements */
+.signup-button {
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.signup-button::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.signup-button:active::after {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+/* Form animations - staggered appearance */
+.form-group {
+    animation: slideUp 0.4s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.15s; }
+.form-group:nth-child(3) { animation-delay: 0.2s; }
+.form-group:nth-child(4) { animation-delay: 0.25s; }
+.form-group:nth-child(5) { animation-delay: 0.3s; }
+
+.form-options {
+    animation: slideUp 0.4s ease-out 0.35s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.signup-button {
+    animation: slideUp 0.4s ease-out 0.4s forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+    .signup-form {
+        padding-top: 16px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .remember-me label {
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 650px) {
+    .signup-form {
+        padding-top: 12px;
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
+    }
+    
+    .logo {
+        margin-bottom: 16px;
+    }
+} 

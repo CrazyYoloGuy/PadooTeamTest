@@ -1,0 +1,307 @@
+/* Registrations Page Styles */
+
+.registrations-content {
+    padding: var(--spacing-6);
+}
+
+/* Filter Section */
+.filter-section {
+    margin-bottom: var(--spacing-6);
+}
+
+.filter-tabs {
+    display: flex;
+    gap: var(--spacing-2);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.filter-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: none;
+    color: var(--gray-600);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.filter-tab:hover {
+    background: var(--gray-100);
+    color: var(--gray-800);
+}
+
+.filter-tab.active {
+    background: var(--primary-500);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-tab .count {
+    background: rgba(255, 255, 255, 0.2);
+    color: inherit;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.filter-tab.active .count {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Table Actions */
+.table-actions {
+    display: flex;
+    gap: var(--spacing-3);
+}
+
+.refresh-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    color: var(--gray-700);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.refresh-btn:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-400);
+}
+
+.refresh-btn i {
+    font-size: var(--font-size-sm);
+}
+
+/* Registration Status */
+.status {
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status.pending {
+    background: var(--warning-100);
+    color: var(--warning-700);
+}
+
+.status.accepted {
+    background: var(--success-100);
+    color: var(--success-700);
+}
+
+.status.rejected {
+    background: var(--error-100);
+    color: var(--error-700);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex !important;
+    gap: var(--spacing-2);
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    padding: var(--spacing-2);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.accept-btn, .reject-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+    min-width: 100px;
+    text-align: center;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--white);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.accept-btn {
+    background: var(--success-500);
+    color: var(--white);
+    border: 2px solid var(--success-500);
+}
+
+.accept-btn:hover {
+    background: var(--success-600);
+    border-color: var(--success-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.reject-btn {
+    background: var(--error-500);
+    color: var(--white);
+    border: 2px solid var(--error-500);
+}
+
+.reject-btn:hover {
+    background: var(--error-600);
+    border-color: var(--error-600);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.accept-btn i, .reject-btn i {
+    font-size: var(--font-size-sm);
+}
+
+/* Force visibility for action buttons */
+.action-buttons,
+.action-buttons *,
+.accept-btn,
+.reject-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* User Info in Table */
+.user-info-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: var(--font-size-sm);
+}
+
+.user-role {
+    font-size: var(--font-size-xs);
+    color: var(--gray-500);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-8);
+    color: var(--gray-500);
+}
+
+.empty-state i {
+    font-size: 48px;
+    margin-bottom: var(--spacing-4);
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-2);
+    color: var(--gray-600);
+}
+
+.empty-state p {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .filter-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .filter-tab {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .registrations-content {
+        padding: var(--spacing-4);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-4);
+    }
+    
+    .filter-tabs {
+        flex-direction: column;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .data-table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-header {
+        flex-direction: column;
+        gap: var(--spacing-3);
+        align-items: flex-start;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-1);
+    }
+    
+    .accept-btn, .reject-btn {
+        padding: 8px 12px;
+        font-size: var(--font-size-xs);
+    }
+} 
