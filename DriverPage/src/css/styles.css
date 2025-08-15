@@ -1198,6 +1198,57 @@ p.screen-header .header-content {
     transform: rotate(180deg);
 }
 
+/* Notification test button */
+.notification-test-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 8px;
+}
+
+.notification-test-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.notification-test-btn:active {
+    transform: scale(0.95);
+}
+
+/* Order highlight animation */
+.highlight-order {
+    animation: highlightPulse 3s ease-in-out;
+    border: 2px solid var(--driver-primary) !important;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3) !important;
+}
+
+@keyframes highlightPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    }
+}
+
 /* New Order Banner - Updated with orange accent */
 .new-order-banner {
     background: var(--driver-gradient);

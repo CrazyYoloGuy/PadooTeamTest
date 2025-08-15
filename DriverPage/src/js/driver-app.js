@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialize WebSocket connection
     initWebSocket();
     
+    // Initialize notification system
+    await initializeNotificationSystem();
+    
     // Initialize history filters
     initializeHistoryFilters();
     
@@ -54,6 +57,44 @@ document.addEventListener('DOMContentLoaded', async () => {
         debugOrderState();
     }, 2000);
 });
+
+// Initialize notification system
+async function initializeNotificationSystem() {
+    try {
+        if (window.notificationManager) {
+            const success = await window.notificationManager.initialize();
+            if (success) {
+                console.log('Notification system initialized successfully');
+                
+                // Add notification test button to header
+                addNotificationTestButton();
+            } else {
+                console.warn('Notification system initialization failed');
+            }
+        } else {
+            console.warn('Notification manager not available');
+        }
+    } catch (error) {
+        console.error('Error initializing notification system:', error);
+    }
+}
+
+// Add notification test button to header
+function addNotificationTestButton() {
+    const headerActions = document.querySelector('.header-actions');
+    if (headerActions) {
+        const testBtn = document.createElement('button');
+        testBtn.className = 'notification-test-btn';
+        testBtn.innerHTML = '<i class="fas fa-bell"></i>';
+        testBtn.title = 'Test Notification';
+        testBtn.onclick = () => {
+            if (window.notificationManager) {
+                window.notificationManager.testNotification();
+            }
+        };
+        headerActions.appendChild(testBtn);
+    }
+}
 
 // Global countdown tracking
 const orderCountdowns = {};
@@ -2236,7 +2277,20 @@ function handleWebSocketMessage(data) {
                 created_at: new Date().toISOString()
             };
             
-            // Show notification for the new order
+            // Show notification using notification manager
+            if (window.notificationManager && window.notificationManager.isInitialized) {
+                window.notificationManager.showLocalNotification(
+                    'New Order Available!',
+                    `New delivery order - $${orderData.amount}`,
+                    {
+                        orderId: orderData.id,
+                        shopName: 'Shop',
+                        orderDetails: orderData
+                    }
+                );
+            }
+            
+            // Show in-app notification
             showNewOrderNotification({
                 type: 'new_order_available',
                 data: orderData
@@ -2277,7 +2331,20 @@ function handleWebSocketMessage(data) {
                 created_at: new Date().toISOString()
             };
             
-            // Show notification for the new order
+            // Show notification using notification manager
+            if (window.notificationManager && window.notificationManager.isInitialized) {
+                window.notificationManager.showLocalNotification(
+                    'New Order Available!',
+                    `New delivery order - $${orderData.amount}`,
+                    {
+                        orderId: orderData.id,
+                        shopName: 'Shop',
+                        orderDetails: orderData
+                    }
+                );
+            }
+            
+            // Show in-app notification
             showNewOrderNotification({
                 type: 'new_order_available',
                 data: orderData
